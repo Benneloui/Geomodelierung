@@ -114,11 +114,20 @@ if (!file.exists("data/extracted_locations.csv")) {
 
 locations <- read.csv("data/extracted_locations.csv",
                       stringsAsFactors = FALSE, fileEncoding = "UTF-8")
-cat(sprintf("✓ %d Locations\n\n", nrow(locations)))
+cat(sprintf("✓ %d Locations gefunden\n", nrow(locations)))
 
-if (nrow(locations) == 0) {
-  stop("Keine Locations zum Visualisieren!")
+# Filter: Nur hochwertige Matches (85-100% Ähnlichkeit)
+min_match_score <- 0.85
+locations_filtered <- locations[locations$match_score >= min_match_score, ]
+
+cat(sprintf("✓ %d Locations nach 85%%-Filter\n", nrow(locations_filtered)))
+cat(sprintf("  (Gefiltert: %d mit < 85%% Match)\n\n", nrow(locations) - nrow(locations_filtered)))
+
+if (nrow(locations_filtered) == 0) {
+  stop("Keine Locations mit ≥85% Match gefunden!")
 }
+
+locations <- locations_filtered
 
 # ------------------------------------------------------------------------------
 # Karte erstellen

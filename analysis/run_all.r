@@ -197,18 +197,3 @@ tryCatch({
   stop("Pipeline abgebrochen")
 })
 
-# ------------------------------------------------------------------------------
-# Zusammenfassung
-# ------------------------------------------------------------------------------
-
-end_time <- Sys.time()
-duration <- difftime(end_time, start_time, units = "mins")
-
-cat("\n")
-cat(strrep("=", 80), "\n")
-cat(strrep("=", 80), "\n")
-cat("  ✓ PIPELINE ERFOLGREICH ABGESCHLOSSEN\n")
-cat(strrep("=", 80), "\n")
-cat(strrep("=", 80), "\n")
-cat("\n")
-cat(sprintf("Dauer: %.1f Minuten\n\n", as.numeric(duration)))

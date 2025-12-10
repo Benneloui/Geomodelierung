@@ -182,18 +182,21 @@ if (is.null(bbox) || length(bbox) != 4) {
 cat(sprintf("✓ Bounding Box gefunden: [%.4f, %.4f, %.4f, %.4f]\n\n",
             bbox[1], bbox[2], bbox[3], bbox[4]))
 
-# Sys.sleep(1) für Rate Limiting
-Sys.sleep(1)
+# Sys.sleep(2) für Rate Limiting - APIs sind manchmal überlastet
+cat("⏳ Warte 2 Sekunden (Rate Limiting)...\n")
+Sys.sleep(2)
 
 # ------------------------------------------------------------------------------
 # Straßen von OpenStreetMap laden
 # ------------------------------------------------------------------------------
 
 cat("Lade Straßennamen von OpenStreetMap...\n")
+cat("⏳ Warte 3 Sekunden vor Overpass-Request...\n")
+Sys.sleep(3)
 
 # Overpass Query mit korrekter Formatierung
 # Bounding Box Format: (south, west, north, east)
-overpass_query <- sprintf('[out:json][timeout:60];
+overpass_query <- sprintf('[out:json][timeout:120];
 (
   way["highway"]["name"](%.6f,%.6f,%.6f,%.6f);
 );
