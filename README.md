@@ -4,7 +4,7 @@ Pipeline to fetch Augsburg council papers (OParl), extract location mentions via
 
 ## Key Output
 
-- `docs/report.html`: rendered R Markdown report with the interactive Leaflet map (filtered to ≥85% match score). Open directly in a browser.
+  https://benneloui.github.io/Geomodelierung/report.html - `docs/report.html`: rendered R Markdown report with the interactive Leaflet map (filtered to ≥85% match score). Open directly in a browser.
 
 ## Quickstart (R)
 
