@@ -6,6 +6,7 @@ renv/library/
 .Ruserdata
 renc.lock
 renv
+geomodelierung.Rproj
 
 #vscode
 .vscode/
