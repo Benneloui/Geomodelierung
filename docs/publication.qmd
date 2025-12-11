@@ -1,16 +1,19 @@
 ---
 title: "Spatial Distribution of Council Decisions"
 author: "Benedikt Pilgram"
-date: "`r Sys.Date()`"
-output:
-  html_document:
+description: "Geographical analysis of the City of Augsburg Council Information System via OParl API by Benedikt Pilgram"
+keywords: ["OParl", "Augsburg", "Data Science", "Benedikt Pilgram", "RIS", "Mapping Politics"]
+date: "2025-12-12"
+website:
+  open-graph: true
+  twitter-card: true
+format:
+  html:
     toc: true
-    toc_float: true
-    toc_depth: 3
-    code_folding: hide
+    code-fold: true
     theme: flatly
     highlight: tango
-    html_document: /Users/benedikt.pilgram/Code/Geomodelierung/docs/report_bp.html
+    html_document: /Users/benedikt.pilgram/Code/Geomodelierung/docs/publication.html
 bibliography: references.bib
 ---
 
