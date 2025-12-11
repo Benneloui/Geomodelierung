@@ -2,8 +2,11 @@
 
 Pipeline to fetch Augsburg council papers (OParl), extract location mentions via fuzzy matching, and visualize them on an interactive map.
 
+
+
 ## Key Output
-  https://benneloui.github.io/Spatial_Distribution_of_Council_Decisions/index.html
+  https://benneloui.github.io/Spatial_Distribution_of_Council_Decisions/
+
 
 ## Quickstart (R)
 
@@ -19,10 +22,12 @@ install.packages(c("tidyverse", "sf", "leaflet", "knitr", "httr", "jsonlite", "d
 Rscript analysis/run_all.r
 ```
 
+
 ## Inputs & Config
 
 - `config.yaml`: city/API settings and limits (max papers/pages, etc.).
 - Data folders under `data/` are created/used by the pipeline (PDFs, gazetteer, extracted locations).
+
 
 ## Scripts (R)
 
