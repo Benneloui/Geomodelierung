@@ -165,7 +165,8 @@ Analysis limited to streets and locations within Augsburg city boundaries. A gaz
 # Average match score: 0.92
 ```
 
-**Match Examples:** - "Fuggerstraße" in paper title + document → 100% match - "Maximilianstr." in text → fuzzy match to "Maximilianstraße" (0.88) - False positives prevented by threshold (e.g., "Straße" alone rejected)
+**Match Examples:** - "Fuggerstraße" in paper title + document → 100% match - "Maximilianstr." in text → fuzzy match to "Maximilianstraße" (0.88) - False positives prevented by threshold (e.g., "Straße" alone rejected). False positives are text passages that would be incorrectly recognised as street names (e.g. the general word ‘street’ or poorly matching spelling variants).
+They are filtered in `03_extract_locations.r` using the fuzzy matching score: Levenshtein distance → match_score = 1 - distance / nchar(street_name). Only matches with a score ≥ threshold value (currently ~0.85 in the script; and also later on, could be a second filter for ≥0.85 on the map) are accepted. Anything below this is discarded and does not appear in data/extracted_locations.csv or on the map.
 
 ## 4.4 Interactive Map
 

@@ -135,18 +135,19 @@ for (i in 1:nrow(papers)) {
       text_words <- unlist(strsplit(full_text, "\\s+"))
 
       distances <- stringdist(
-        tolower(street_name),
-        tolower(text_words),
-        method = "lv"
+        tolower(street_name), # Suchbegriff
+        tolower(text_words), # Text-Wörter
+        method = "lv" # Levenshtein-Distanz
       )
 
-      min_dist <- min(distances, na.rm = TRUE)
+      min_dist <- min(distances, na.rm = TRUE) # Kleinste Distanz finden
       direct_match <- grepl(street_name, full_text, ignore.case = TRUE)
 
       if (min_dist <= 3 || direct_match) {
-        match_score <- max(0, 1 - (min_dist / nchar(street_name)))
+        match_score <- max(0, 1 - (min_dist / nchar(street_name))) # Normalisierter Score.
 
-        found_streets <- rbind(found_streets, data.frame(
+        if (match_score >= 0.85) {   # Filter einziehen
+         found_streets <- rbind(found_streets, data.frame(
           paper_id = paper$paper_id,
           paper_title = paper$paper_title,
           paper_date = paper$paper_date,
@@ -158,6 +159,7 @@ for (i in 1:nrow(papers)) {
           match_score = round(match_score, 2),
           stringsAsFactors = FALSE
         ))
+        }
       }
     }
 
